@@ -1,27 +1,26 @@
-package br.com.restAPI.models;
+package br.com.restAPI.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Service;
 
-@Entity
-@Table(name = "vagas")
-@Builder
-@NoArgsConstructor
+import java.io.Serializable;
+
+
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-public class Vaga {
+@Entity
+public class Vaga implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true, nullable = false, length = 50,columnDefinition = "TEXT")
     private String titulo;
     private String descricao;
     private Double remuneracao;
     private int quantidadeCandidatados;
-
-    @ManyToOne
-    @JoinColumn(name ="vaga_id")
-    private UserEmpresa empresa;
+    private String empresa;
 }
