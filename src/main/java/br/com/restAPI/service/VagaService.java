@@ -7,9 +7,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 @Service
 public class VagaService {
+
+    public Logger logger = Logger.getLogger(VagaService.class.getName());
 
     @Autowired
     private VagasRepository vagasRepository;

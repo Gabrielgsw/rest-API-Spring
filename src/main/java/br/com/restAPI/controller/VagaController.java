@@ -4,6 +4,7 @@ package br.com.restAPI.controller;
 import br.com.restAPI.domain.Vaga;
 import br.com.restAPI.service.VagaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,12 +19,12 @@ public class VagaController {
     @Autowired
     private VagaService vagaService;
 
-    @GetMapping
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Vaga> listarVagas() {
         return vagaService.listarVagas();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Vaga> buscarPorId(@PathVariable Long id) {
         Optional<Vaga> vaga = vagaService.buscarPorId(id);
         if (vaga.isPresent()) {
